@@ -1,0 +1,103 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red12\green14\blue18;\red224\green232\blue240;\red91\green98\blue110;
+}
+{\*\expandedcolortbl;;\cssrgb\c5098\c6667\c9020;\cssrgb\c90196\c92941\c95294;\cssrgb\c43137\c46275\c50588;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+from collections import defaultdict\
+\
+class Graph:\
+    def __init__(self):\
+        self.graph = defaultdict(list)\
+        self.bfs = ""\
+        self.found = False\
+\
+    def addEdge(self, u, v):\
+        self.graph[u].append(v)\
+\
+    def BFS(self, root, search):\
+        visited = []\
+        queue = []\
+        self.bfs = ""\
+        visited.append(root)\
+        queue.append(root)\
+        while queue:\
+            m = queue.pop(0)\
+            self.bfs = self.bfs + m + " "\
+            if m == search:\
+                self.found = True\
+                return\
+            for neighbour in self.graph[m]:\
+                if neighbour not in visited:\
+                    visited.append(neighbour)\
+                    queue.append(neighbour)\
+\
+g = Graph()\
+n = int(input("Enter the number of nodes: "))\
+root = input("Enter root node: ")\
+search = input("Enter search element: ")\
+print("Enter the parent-child pairs of the tree:")\
+for i in range(n - 1):\
+    parent, child = input().split()\
+    g.addEdge(parent, child)\
+\
+g.BFS(root, search)\
+if g.found:\
+    print("Following is the Breadth-First Search:")\
+    print(g.bfs)\
+else:\
+    print("Given search element is not found in the tree")
+\f1\fs28 \cf3 \
+\pard\pardeftab720\qr\partightenfactor0
+
+\f0\fs24 \cf4 \cb2 1\cb1 \
+\cb2 2\cb1 \
+\cb2 3\cb1 \
+\
+\cb2 4\cb1 \
+\cb2 5\cb1 \
+\cb2 6\cb1 \
+\cb2 7\cb1 \
+\cb2 8\cb1 \
+\cb2 9\cb1 \
+\cb2 10\cb1 \
+\cb2 11\cb1 \
+\cb2 12\cb1 \
+\
+\cb2 13\cb1 \
+\cb2 14\cb1 \
+\cb2 15\cb1 \
+\cb2 16\cb1 \
+\cb2 17\cb1 \
+\cb2 18\cb1 \
+\cb2 19\cb1 \
+\cb2 20\cb1 \
+\cb2 21\cb1 \
+\cb2 22\cb1 \
+\cb2 23\cb1 \
+\cb2 24\cb1 \
+\cb2 25\cb1 \
+\cb2 26\cb1 \
+\cb2 27\cb1 \
+\cb2 28\cb1 \
+\cb2 29\cb1 \
+\cb2 30\cb1 \
+\cb2 31\cb1 \
+\cb2 32\cb1 \
+\cb2 33\cb1 \
+\cb2 34\cb1 \
+\cb2 35\cb1 \
+\cb2 36\cb1 \
+\cb2 37\cb1 \
+\cb2 38\cb1 \
+\cb2 39\cb1 \
+\cb2 40\cb1 \
+\cb2 41\cb1 \
+\cb2 42\cb1 \
+\cb2 43\cb1 \
+}

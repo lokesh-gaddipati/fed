@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red12\green14\blue18;\red224\green232\blue240;\red91\green98\blue110;
+}
+{\*\expandedcolortbl;;\cssrgb\c5098\c6667\c9020;\cssrgb\c90196\c92941\c95294;\cssrgb\c43137\c46275\c50588;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+import itertools\
+\
+# Function to calculate the total distance of a path\
+def calculate_total_distance(path, graph):\
+    total_distance = 0\
+    for i in range(len(path) - 1):\
+        total_distance += graph[path[i]][path[i+1]]\
+    return total_distance\
+\
+# Input the number of nodes\
+num_nodes = int(input("Enter the number of nodes: "))\
+\
+# Initialize an empty graph as a dictionary\
+graph = \{\}\
+\
+# Input the connections and weights\
+for i in range(num_nodes):\
+    node_name = input(f"Enter the name of node \{i+1\}: ")\
+    num_outgoing_connections = int(input(f"Enter the number of outgoing connections from \{node_name\}: "))\
+    connections = \{\}\
+    for j in range(num_outgoing_connections):\
+        connected_node, weight = input(f"Enter connected node and weight (e.g., B 5): ").split()\
+        connections[connected_node] = int(weight)\
+    graph[node_name] = connections\
+\
+# Ask for the starting position\
+start_node = input("Enter the starting node: ")\
+\
+# Generate all possible permutations of nodes starting from the specified node\
+nodes = list(graph.keys())\
+nodes.remove(start_node)\
+permutations = itertools.permutations(nodes)\
+\
+# Initialize variables to track the shortest path and distance\
+shortest_path = None\
+shortest_distance = float('inf')\
+\
+# Initialize a list to store the remaining paths\
+remaining_paths = []\
+\
+# Find the shortest path and calculate the remaining paths\
+for perm in permutations:\
+    current_path = [start_node] + list(perm) + [start_node]\
+    total_distance = calculate_total_distance(current_path, graph)\
+    if total_distance < shortest_distance:\
+        shortest_path = current_path\
+        shortest_distance = total_distance\
+    remaining_paths.append((list(perm), total_distance))\
+\
+# Print the shortest path and distance\
+print(f"Shortest Path: \{' -> '.join(shortest_path)\}")\
+print(f"Shortest Distance: \{shortest_distance\}")\
+\
+# Print the remaining paths with their distances\
+for path, distance in remaining_paths:\
+    print(f"Remaining Path from \{start_node\} to \{path[-1]\}: \{' -> '.join([start_node] + path + [start_node])\}")\
+    print(f"Remaining Distance: \{distance\}")
+\f1\fs28 \cf3 \
+\pard\pardeftab720\qr\partightenfactor0
+
+\f0\fs24 \cf4 \cb2 1\cb1 \
+\cb2 2\cb1 \
+\cb2 3\cb1 \
+\cb2 4\cb1 \
+\
+\cb2 5\cb1 \
+\cb2 6\cb1 \
+\cb2 7\cb1 \
+\cb2 8\cb1 \
+\cb2 9\cb1 \
+\cb2 10\cb1 \
+\cb2 11\cb1 \
+\cb2 12\cb1 \
+\cb2 13\cb1 \
+\cb2 14\cb1 \
+\cb2 15\cb1 \
+\cb2 16\cb1 \
+\cb2 17\cb1 \
+\cb2 18\cb1 \
+\cb2 19\cb1 \
+\cb2 20\cb1 \
+\cb2 21\cb1 \
+\cb2 22\cb1 \
+\cb2 23\cb1 \
+\cb2 24\cb1 \
+\cb2 25\cb1 \
+\cb2 26\cb1 \
+\cb2 27\cb1 \
+\cb2 28\cb1 \
+\cb2 29\cb1 \
+\cb2 30\cb1 \
+\cb2 31\cb1 \
+\cb2 32\cb1 \
+\cb2 33\cb1 \
+\cb2 34\cb1 \
+\cb2 35\cb1 \
+\cb2 36\cb1 \
+\cb2 37\cb1 \
+\cb2 38\cb1 \
+\cb2 39\cb1 \
+\cb2 40\cb1 \
+\cb2 41\cb1 \
+\cb2 42\cb1 \
+\cb2 43\cb1 \
+\cb2 44\cb1 \
+\cb2 45\cb1 \
+\cb2 46\cb1 \
+\cb2 47\cb1 \
+\cb2 48\cb1 \
+\cb2 49\cb1 \
+\cb2 50\cb1 \
+\cb2 51\cb1 \
+\cb2 52\cb1 \
+\cb2 53\cb1 \
+\cb2 54\cb1 \
+\cb2 55\cb1 \
+\cb2 56\cb1 \
+\cb2 57\cb1 \
+}
